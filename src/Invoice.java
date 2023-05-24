@@ -31,19 +31,11 @@ public class Invoice {
 
     public double calculateTax(Product product) {
         double tax = 0.0;
-
-        if (product.isImported()) {
-            tax += ImportedTaxCalculator.calculateTax(product);
-        }
-
-        if (!product.isTaxExempt()) {
-            tax += TVATaxCalculator.calculateTax(product);
-        }
-
+        if (product.isImported())       tax += ImportedTaxCalculator.calculateTax(product);
+        if (!product.isTaxExempt())     tax += TVATaxCalculator.calculateTax(product);
         return tax;
     }
-
-
+    
 
     public List<Product> getProducts() {
         return products;
